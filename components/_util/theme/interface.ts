@@ -102,6 +102,7 @@ export interface OverrideToken {
   Layout?: {};
   Upload?: UploadComponentToken;
   Tooltip?: {};
+  Table?: {};
   Space?: SpaceComponentToken;
   Progress?: ProgressComponentToken;
 }

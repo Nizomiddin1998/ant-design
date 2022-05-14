@@ -49,6 +49,7 @@ import Column from './Column';
 import ColumnGroup from './ColumnGroup';
 import warning from '../_util/warning';
 import useBreakpoint from '../grid/hooks/useBreakpoint';
+import useStyle from './style';
 
 export { ColumnsType, TablePaginationConfig };
 
@@ -492,14 +493,18 @@ function InternalTable<RecordType extends object = any>(
     };
   }
 
+  // Style
+  const [wrapSSR, hashId] = useStyle(prefixCls);
+
   const wrapperClassNames = classNames(
     `${prefixCls}-wrapper`,
     {
       [`${prefixCls}-wrapper-rtl`]: direction === 'rtl',
     },
     className,
+    hashId,
   );
-  return (
+  return wrapSSR(
     <div ref={ref} className={wrapperClassNames} style={style}>
       <Spin spinning={false} {...spinProps}>
         {topPaginationNode}
@@ -526,7 +531,7 @@ function InternalTable<RecordType extends object = any>(
         />
         {bottomPaginationNode}
       </Spin>
-    </div>
+    </div>,
   );
 }
 
