@@ -7,6 +7,7 @@ import type { ComponentToken as EmptyComponentToken } from '../../empty/style';
 import type { ComponentToken as CascaderComponentToken } from '../../cascader/style';
 import type { ComponentToken as InputNumberComponentToken } from '../../input-number/style';
 import type { ComponentToken as MentionsComponentToken } from '../../mentions/style';
+import type { ComponentToken as NotificationComponentToken } from '../../notification/style';
 import type { ComponentToken as SegmentedComponentToken } from '../../segmented/style';
 import type { ComponentToken as SelectComponentToken } from '../../select/style';
 import type { ComponentToken as SliderComponentToken } from '../../slider/style';
@@ -22,6 +23,7 @@ import type { ComponentToken as ProgressComponentToken } from '../../progress/st
 import type { ComponentToken as SpaceComponentToken } from '../../space/style';
 import type { ComponentToken as ModalComponentToken } from '../../modal/style';
 import type { ComponentToken as ImageComponentToken } from '../../image/style';
+import type { ComponentToken as ListComponentToken } from '../../list/style';
 
 export const PresetColors = [
   'blue',
@@ -75,8 +77,9 @@ export interface OverrideToken {
   Image?: ImageComponentToken;
   Input?: {};
   InputNumber?: InputNumberComponentToken;
-  List?: {};
+  List?: ListComponentToken;
   Mentions?: MentionsComponentToken;
+  Notification?: NotificationComponentToken;
   Pagination?: {};
   Popover?: {};
   Rate?: {};
@@ -105,6 +108,7 @@ export interface OverrideToken {
   Table?: {};
   Space?: SpaceComponentToken;
   Progress?: ProgressComponentToken;
+  Transfer?: {};
 }
 
 /** Final token which contains the components level override */
@@ -137,6 +141,7 @@ export interface SeedToken extends PresetColorType {
   // Line
   /** Border width of base components */
   lineWidth: number;
+  lineType: string;
 
   // Motion
   motionUnit: number;
@@ -336,10 +341,11 @@ export interface AliasToken extends Omit<DerivativeToken, OmitDerivativeKey> {
   paddingXS: number;
   paddingXXS: number;
   paddingLG: number;
+  marginXXS: number;
   marginXS: number;
   marginSM: number;
   marginLG: number;
-  marginXXS: number;
+  marginXL: number;
 
   // Media queries breakpoints
   screenXS: number;
